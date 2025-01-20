@@ -19,7 +19,7 @@ public class Main {
 		System.out.println();
 		
 		// Remover uma aresta
-		grafo.removerAresta(1, 3);
+		// grafo.removerAresta(1, 3);
 		
 		grafo.adicionarAresta(0, 2, 1);
 		
@@ -29,9 +29,19 @@ public class Main {
 		
 		System.out.println(grafo.verificarAdjacentes(0, 4));
 		
+		System.out.println(grafo.verificarAdjacentes(3, 4));
+		
 		System.out.println();
 		
 		grafo.mostrarVizinhos(0);
+		
+		System.out.println();
+		
+		grafo.mostrarVizinhos(3);
+		
+		System.out.println();
+		
+		grafo.grauVertice(2);
 		
 	}
 }

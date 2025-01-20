@@ -13,7 +13,7 @@ public class MatrizAdjacencia {
 		this.matrizAdjacencia = new int[numeroVertices][numeroVertices];
 	}
 	
-	// Método para adicionar uma aresta
+	// Métodos para adicionar uma aresta
 	public void adicionarAresta(int origem, int destino, int peso) {
 		atualizarAresta(origem, destino, peso);
 	}
@@ -84,23 +84,38 @@ public class MatrizAdjacencia {
 	
 	// Método para contar o grau de um vértice
 	public void grauVertice(int vertice) {
-		if(direcionado) {
-			contarGrauInterno(vertice);
-			contarGrauExterno(vertice);
+		if(vertice >= 0 && vertice < numeroVertices) {
+			if(direcionado)
+				grauInternoExterno(vertice);
+			else
+				contarGrau(vertice);
 		} else
-			contarGrau(vertice);
+			System.out.println("Vértice inválido!");
 	}
 	
 	private void contarGrau(int vertice) {
+		int grau = 0;
 		
+		for(int i = 0; i < numeroVertices; i++) {
+			if(matrizAdjacencia[vertice][i] != 0)
+				grau++;
+		}
+		
+		System.out.println("Grau de " + vertice + ": " + grau);
 	}
 	
-	private void contarGrauInterno(int vertice) {
+	private void grauInternoExterno(int vertice) {
+		int grauInterno = 0;
+		int grauExterno = 0;
 		
-	}
-	
-	private void contarGrauExterno(int vertice) {
+		for(int i = 0; i < numeroVertices; i++) {
+			if(matrizAdjacencia[i][vertice] != 0)
+				grauInterno++;
+			if(matrizAdjacencia[vertice][i] != 0)
+				grauExterno++;
+		}
 		
+		System.out.println("Grau interno de " + vertice + ": " + grauInterno);
+		System.out.println("Grau externo de " + vertice + ": " + grauExterno);
 	}
-	
 }
